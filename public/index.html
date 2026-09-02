@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <meta
+    name="description"
+    content="Gharana Junction - Order delicious food online"
+  />
+
+  <title>Gharana Junction</title>
+
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="top-header">
+
+    <div class="brand">
+      <div class="brand-logo">GJ</div>
+
+      <div>
+        <h1>Gharana Junction</h1>
+        <p>Homemade • Fresh • Delicious</p>
+      </div>
+    </div>
+
+  </header>
+
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- SEARCH -->
+    <section class="search-section">
+
+      <div class="search-box">
+        <span>🔍</span>
+
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Search food..."
+          autocomplete="off"
+        />
+      </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="category-section">
+
+      <div
+        id="categoryList"
+        class="category-list"
+      ></div>
+
+    </section>
+
+
+    <!-- MENU -->
+    <section class="menu-section">
+
+      <div
+        id="menuContainer"
+        class="menu-container"
+      ></div>
+
+    </section>
+
+  </main>
+
+
+  <!-- CART BUTTON -->
+  <button
+    id="cartButton"
+    class="cart-button"
+    type="button"
+  >
+
+    <span>🛒</span>
+
+    <span>
+      Cart
+      <b id="cartCount">0</b>
+    </span>
+
+    <strong id="cartTotal">₹0</strong>
+
+  </button>
+
+
+  <!-- CART MODAL -->
+  <div
+    id="cartModal"
+    class="modal hidden"
+  >
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h2>Your Cart</h2>
+
+        <button
+          id="closeCart"
+          class="close-button"
+          type="button"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div
+        id="cartItems"
+        class="cart-items"
+      ></div>
+
+
+      <div class="cart-summary">
+
+        <div>
+          <span>Subtotal</span>
+          <strong id="modalTotal">₹0</strong>
+        </div>
+
+      </div>
+
+
+      <button
+        id="checkoutButton"
+        class="primary-button"
+        type="button"
+      >
+        Place Order
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- CUSTOMER NAME MODAL -->
+  <div
+    id="nameModal"
+    class="modal hidden"
+  >
+
+    <div class="modal-content small-modal">
+
+      <div class="modal-header">
+
+        <h2>Place Your Order</h2>
+
+        <button
+          id="closeNameModal"
+          class="close-button"
+          type="button"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <p class="checkout-text">
+        Enter your name and we'll open WhatsApp with your order.
+      </p>
+
+
+      <label for="customerName">
+        Your Name
+      </label>
+
+      <input
+        id="customerName"
+        class="name-input"
+        type="text"
+        placeholder="Enter your name"
+        autocomplete="name"
+      />
+
+
+      <button
+        id="whatsappButton"
+        class="primary-button whatsapp-button"
+        type="button"
+      >
+        Order on WhatsApp
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- BOTTOM NAVIGATION -->
+  <nav class="bottom-nav">
+
+    <button
+      class="bottom-nav-item active"
+      type="button"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    >
+      <span>⌂</span>
+      <small>Home</small>
+    </button>
+
+    <button
+      class="bottom-nav-item"
+      type="button"
+      onclick="document.querySelector('.menu-section').scrollIntoView({behavior: 'smooth'})"
+    >
+      <span>☰</span>
+      <small>Menu</small>
+    </button>
+
+    <button
+      class="bottom-nav-item"
+      type="button"
+      id="bottomCartButton"
+    >
+      <span>🛒</span>
+      <small>Cart</small>
+    </button>
+
+  </nav>
+
+
+  <script src="/app.js"></script>
+
+</body>
+</html>
