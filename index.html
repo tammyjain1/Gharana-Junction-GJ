@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Gharana Junction — Menu</title>
+<link rel="icon" href="assets/logo.jpeg" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="shell" id="shell">
+
+  <header class="site-header">
+    <img class="logo" src="assets/logo.jpeg" alt="Gharana Junction" />
+    <div class="brand">
+      <strong id="brandName">Gharana Junction</strong>
+      <span>Digital Menu</span>
+    </div>
+    <div class="header-spacer"></div>
+  </header>
+
+  <div class="search-wrap">
+    <div class="search-box">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="searchInput" placeholder="Search item" />
+    </div>
+  </div>
+
+  <nav class="category-scroll" id="categoryScroll"></nav>
+
+  <main id="menuList">
+    <div class="empty-state"><strong>Loading menu…</strong>One moment.</div>
+  </main>
+
+  <!-- Sticky cart bar -->
+  <div class="cart-bar" id="cartBar">
+    <div class="cart-summary">
+      <small id="cartItemCount">0 items</small>
+      <strong id="cartTotal">₹0</strong>
+    </div>
+    <button class="view-cart-btn" id="viewCartBtn">View Cart</button>
+  </div>
+
+</div>
+
+<!-- Cart drawer -->
+<div class="overlay" id="cartOverlay">
+  <div class="drawer">
+    <div class="drawer-head">
+      <h2>Your Order</h2>
+      <button id="closeCart" aria-label="Close">✕</button>
+    </div>
+    <div class="drawer-body" id="cartBody"></div>
+    <div class="drawer-foot">
+      <div class="total-row"><span>Total</span><span id="drawerTotal">₹0</span></div>
+      <button class="primary-btn" id="proceedBtn">Place Order</button>
+    </div>
+  </div>
+</div>
+
+<!-- Name modal -->
+<div class="overlay" id="nameOverlay">
+  <div class="drawer" style="border-radius:20px; max-height:none;">
+    <div class="drawer-head">
+      <h2>Almost done</h2>
+      <button id="closeName" aria-label="Close">✕</button>
+    </div>
+    <div class="drawer-body">
+      <label class="field-label" for="customerName">Your name</label>
+      <input class="text-input" id="customerName" placeholder="e.g. Rahul" autocomplete="name" />
+    </div>
+    <div class="drawer-foot">
+      <button class="primary-btn" id="sendOrderBtn">Send Order on WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="js/firebase-config.js"></script>
+<script src="js/customer.js"></script>
+</body>
+</html>
