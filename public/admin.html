@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#191919"
+    >
+
+    <title>Gharana Junction | Owner</title>
+
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
+    <style>
+        /* =====================================
+           ADMIN PAGE
+        ====================================== */
+
+        .admin-page {
+            min-height: 100vh;
+            background: #f7f5f1;
+        }
+
+        .admin-header {
+            background: #191919;
+            color: #ffffff;
+        }
+
+        .admin-header-inner {
+            width: min(1200px, calc(100% - 32px));
+            min-height: 76px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .admin-brand-logo {
+            width: 44px;
+            height: 44px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 13px;
+
+            background: #ffffff;
+            color: #191919;
+
+            font-size: 15px;
+            font-weight: 800;
+        }
+
+        .admin-brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .admin-brand-text strong {
+            font-size: 16px;
+        }
+
+        .admin-brand-text span {
+            margin-top: 2px;
+
+            color: #bcb8b2;
+
+            font-size: 11px;
+        }
+
+        .view-menu-button {
+            border: 1px solid #4a4a4a;
+            border-radius: 10px;
+
+            padding: 9px 13px;
+
+            background: transparent;
+            color: #ffffff;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .admin-container {
+            width: min(1200px, calc(100% - 32px));
+            margin: auto;
+
+            padding: 32px 0 70px;
+        }
+
+        .admin-title {
+            margin-bottom: 25px;
+        }
+
+        .admin-title p {
+            color: #817a71;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            letter-spacing: 1.5px;
+        }
+
+        .admin-title h1 {
+            margin-top: 5px;
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: clamp(32px, 5vw, 46px);
+        }
+
+        .admin-grid {
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.6fr)
+                minmax(280px, 0.8fr);
+
+            gap: 20px;
+
+            align-items: start;
+        }
+
+        .admin-card {
+            background: #ffffff;
+
+            border: 1px solid #e5dfd6;
+            border-radius: 18px;
+
+            padding: 22px;
+
+            box-shadow:
+                0 8px 28px rgba(35, 28, 18, 0.045);
+        }
+
+        .admin-card + .admin-card {
+            margin-top: 20px;
+        }
+
+        .admin-card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 18px;
+        }
+
+        .admin-card-header h2 {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            font-size: 25px;
+        }
+
+        .admin-card-header p {
+            margin-top: 3px;
+
+            color: #888178;
+
+            font-size: 12px;
+        }
+
+        .admin-form {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 13px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+
+            gap: 6px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            color: #625c54;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+
+            border: 1px solid #dcd6cc;
+            border-radius: 10px;
+
+            padding: 11px 12px;
+
+            outline: none;
+
+            background: #faf9f7;
+            color: #191919;
+
+            font-size: 13px;
+        }
+
+        .form-group textarea {
+            min-height: 82px;
+
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #9b948a;
+
+            background: #ffffff;
+
+            box-shadow:
+                0 0 0 3px rgba(120, 110, 95, 0.08);
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+
+            gap: 9px;
+
+            padding: 5px 0;
+        }
+
+        .checkbox-row input {
+            width: 17px;
+            height: 17px;
+        }
+
+        .checkbox-row label {
+            color: #555049;
+
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .form-actions {
+            grid-column: 1 / -1;
+
+            display: flex;
+            gap: 9px;
+
+            margin-top: 3px;
+        }
+
+        .primary-button,
+        .secondary-button,
+        .danger-button {
+            border-radius: 10px;
+
+            padding: 10px 15px;
+
+            font-size: 12px;
+            font-weight: 800;
+        }
+
+        .primary-button {
+            border: 1px solid #191919;
+
+            background: #191919;
+            color: #ffffff;
+        }
+
+        .secondary-button {
+            border: 1px solid #d9d3c9;
+
+            background: #ffffff;
+            color: #191919;
+        }
+
+        .danger-button {
+            border: 1px solid #e3c8c5;
+
+            background: #fff7f6;
+            color: #a53b32;
+        }
+
+        .primary-button:active,
+        .secondary-button:active,
+        .danger-button:active {
+            transform: scale(0.98);
+        }
+
+        /* =====================================
+           ITEM LIST
+        ====================================== */
+
+        .admin-item-list {
+            display: flex;
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+        .admin-item {
+            display: flex;
+            align-items: center;
+
+            gap: 13px;
+
+            padding: 13px;
+
+            border: 1px solid #ebe6de;
+            border-radius: 13px;
+
+            background: #faf9f7;
+        }
+
+        .admin-item-image {
+            width: 62px;
+            height: 62px;
+
+            flex-shrink: 0;
+
+            overflow: hidden;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 10px;
+
+            background: #e9e4dc;
+
+            color: #756e64;
+
+            font-family: Georgia, serif;
+            font-weight: 700;
+        }
+
+        .admin-item-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        .admin-item-info {
+            flex: 1;
+
+            min-width: 0;
+        }
+
+        .admin-item-name {
+            font-size: 14px;
+            font-weight: 800;
+        }
+
+        .admin-item-meta {
+            margin-top: 3px;
+
+            color: #888178;
+
+            font-size: 11px;
+        }
+
+        .admin-item-status {
+            display: inline-flex;
+
+            margin-top: 6px;
+
+            padding: 3px 7px;
+
+            border-radius: 999px;
+
+            font-size: 9px;
+            font-weight: 800;
+        }
+
+        .status-available {
+            background: #eaf7ee;
+            color: #227343;
+        }
+
+        .status-unavailable {
+            background: #fff0ef;
+            color: #a23a32;
+        }
+
+        .admin-item-actions {
+            display: flex;
+            gap: 6px;
+
+            flex-shrink: 0;
+        }
+
+        .small-button {
+            border: 1px solid #d8d2c8;
+            border-radius: 8px;
+
+            padding: 7px 9px;
+
+            background: #ffffff;
+            color: #292621;
+
+            font-size: 10px;
+            font-weight: 800;
+        }
+
+        .small-button.delete {
+            border-color: #ead0cd;
+
+            color: #a23a32;
+        }
+
+        /* =====================================
+           CATEGORY LIST
+        ====================================== */
+
+        .category-admin-list {
+            display: flex;
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        .category-admin-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 10px;
+
+            padding: 11px 12px;
+
+            border: 1px solid #ebe6de;
+            border-radius: 10px;
+
+            background: #faf9f7;
+        }
+
+        .category-admin-name {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .category-admin-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .category-form {
+            display: flex;
+
+            gap: 7px;
+
+            margin-bottom: 15px;
+        }
+
+        .category-form input {
+            min-width: 0;
+            flex: 1;
+
+            height: 40px;
+
+            border: 1px solid #dcd6cc;
+            border-radius: 9px;
+
+            padding: 0 10px;
+
+            outline: none;
+
+            background: #faf9f7;
+
+            font-size: 12px;
+        }
+
+        .category-form button {
+            border: 0;
+            border-radius: 9px;
+
+            padding: 0 13px;
+
+            background: #191919;
+            color: #ffffff;
+
+            font-size: 11px;
+            font-weight: 800;
+        }
+
+        .admin-message {
+            display: none;
+
+            margin-bottom: 18px;
+
+            padding: 11px 13px;
+
+            border-radius: 10px;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .admin-message.show {
+            display: block;
+        }
+
+        .admin-message.success {
+            background: #eaf7ee;
+            color: #227343;
+        }
+
+        .admin-message.error {
+            background: #fff0ef;
+            color: #a23a32;
+        }
+
+        .loading-text {
+            padding: 20px 0;
+
+            color: #8b847b;
+
+            font-size: 13px;
+
+            text-align: center;
+        }
+
+        @media (max-width: 900px) {
+
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .admin-header-inner {
+                width: calc(100% - 22px);
+
+                min-height: 68px;
+            }
+
+            .admin-container {
+                width: calc(100% - 22px);
+
+                padding-top: 23px;
+            }
+
+            .admin-card {
+                padding: 17px;
+
+                border-radius: 15px;
+            }
+
+            .admin-form {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .form-actions {
+                grid-column: auto;
+
+                flex-wrap: wrap;
+            }
+
+            .admin-item {
+                align-items: flex-start;
+            }
+
+            .admin-item-actions {
+                flex-direction: column;
+            }
+
+            .admin-item-image {
+                width: 54px;
+                height: 54px;
+            }
+
+            .view-menu-button {
+                padding: 8px 10px;
+
+                font-size: 10px;
+            }
+
+        }
+    </style>
+</head>
+
+
+<body>
+
+<div class="admin-page">
+
+    <!-- =====================================
+         ADMIN HEADER
+    ====================================== -->
+
+    <header class="admin-header">
+
+        <div class="admin-header-inner">
+
+            <div class="admin-brand">
+
+                <div class="admin-brand-logo">
+                    GJ
+                </div>
+
+                <div class="admin-brand-text">
+
+                    <strong>
+                        Gharana Junction
+                    </strong>
+
+                    <span>
+                        Owner Dashboard
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="/menu"
+                class="view-menu-button"
+            >
+                View Customer Menu
+            </a>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================
+         MAIN
+    ====================================== -->
+
+    <main class="admin-container">
+
+        <div class="admin-title">
+
+            <p>
+                MANAGEMENT PANEL
+            </p>
+
+            <h1>
+                Manage Menu
+            </h1>
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div
+            id="adminMessage"
+            class="admin-message"
+        ></div>
+
+
+        <div class="admin-grid">
+
+
+            <!-- =================================
+                 LEFT COLUMN
+            ================================== -->
+
+            <div>
+
+
+                <!-- =================================
+                     ADD / EDIT ITEM
+                ================================== -->
+
+                <section class="admin-card">
+
+                    <div class="admin-card-header">
+
+                        <div>
+
+                            <h2 id="itemFormTitle">
+                                Add Food Item
+                            </h2>
+
+                            <p>
+                                Add or update dishes
+                                shown to customers.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form
+                        id="itemForm"
+                        class="admin-form"
+                    >
+
+                        <input
+                            type="hidden"
+                            id="itemId"
+                        >
+
+
+                        <div class="form-group">
+
+                            <label for="itemName">
+                                Item Name
+                            </label>
+
+                            <input
+                                id="itemName"
+                                type="text"
+                                placeholder="e.g. Paneer Tikka"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="itemPrice">
+                                Price (₹)
+                            </label>
+
+                            <input
+                                id="itemPrice"
+                                type="number"
+                                min="0"
+                                step="0.01"
+                                placeholder="180"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="itemCategory">
+                                Category
+                            </label>
+
+                            <select
+                                id="itemCategory"
+                                required
+                            >
+                                <option value="">
+                                    Select category
+                                </option>
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="itemImage">
+                                Image URL
+                            </label>
+
+                            <input
+                                id="itemImage"
+                                type="url"
+                                placeholder="https://..."
+                            >
+
+                        </div>
+
+
+                        <div class="form-group full">
+
+                            <label for="itemDescription">
+                                Description
+                            </label>
+
+                            <textarea
+                                id="itemDescription"
+                                placeholder="Short description of the dish..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="checkbox-row">
+
+                                <input
+                                    id="itemVeg"
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <label for="itemVeg">
+                                    Vegetarian item
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div>
+
+                            <div class="checkbox-row">
+
+                                <input
+                                    id="itemAvailable"
+                                    type="checkbox"
+                                    checked
+                                >
+
+                                <label for="itemAvailable">
+                                    Available for customers
+                                </label>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-actions">
+
+                            <button
+                                type="submit"
+                                class="primary-button"
+                                id="saveItemButton"
+                            >
+                                Add Item
+                            </button>
+
+                            <button
+                                type="button"
+                                class="secondary-button"
+                                id="cancelEditButton"
+                                hidden
+                            >
+                                Cancel Edit
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+
+                <!-- =================================
+                     ITEMS
+                ================================== -->
+
+                <section class="admin-card">
+
+                    <div class="admin-card-header">
+
+                        <div>
+
+                            <h2>
+                                Food Items
+                            </h2>
+
+                            <p>
+                                Edit, delete or change
+                                availability.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="adminItems"
+                        class="admin-item-list"
+                    >
+
+                        <div class="loading-text">
+                            Loading items...
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- =================================
+                 RIGHT COLUMN
+            ================================== -->
+
+            <div>
+
+
+                <!-- =================================
+                     CATEGORIES
+                ================================== -->
+
+                <section class="admin-card">
+
+                    <div class="admin-card-header">
+
+                        <div>
+
+                            <h2>
+                                Categories
+                            </h2>
+
+                            <p>
+                                Organize your menu.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form
+                        id="categoryForm"
+                        class="category-form"
+                    >
+
+                        <input
+                            id="categoryName"
+                            type="text"
+                            placeholder="New category"
+                            required
+                        >
+
+                        <button
+                            type="submit"
+                        >
+                            ADD
+                        </button>
+
+                    </form>
+
+
+                    <div
+                        id="adminCategories"
+                        class="category-admin-list"
+                    >
+
+                        <div class="loading-text">
+                            Loading categories...
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================
+                     INFO
+                ================================== -->
+
+                <section class="admin-card">
+
+                    <div class="admin-card-header">
+
+                        <div>
+
+                            <h2>
+                                Quick Info
+                            </h2>
+
+                        </div>
+
+                    </div>
+
+
+                    <p
+                        style="
+                            color:#77716a;
+                            font-size:13px;
+                            line-height:1.7;
+                        "
+                    >
+                        Changes made here are saved
+                        directly to the menu database.
+                        Customers will see available
+                        items on the customer menu.
+                    </p>
+
+                </section>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================
+     ADMIN JAVASCRIPT
+========================================== -->
+
+<script
+    src="admin.js"
+    defer
+></script>
+
+</body>
+</html>
