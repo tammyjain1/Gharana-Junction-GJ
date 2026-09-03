@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Owner Panel — Gharana Junction</title>
+<link rel="icon" href="logo.jpeg" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div class="login-screen" id="loginScreen">
+  <div class="login-card">
+    <img src="logo.jpeg" alt="Gharana Junction" />
+    <h1>Owner Login</h1>
+    <p class="sub">This page is private. Only the restaurant owner should sign in here.</p>
+    <input class="text-input" type="email" id="loginEmail" placeholder="Email" autocomplete="username" />
+    <input class="text-input" type="password" id="loginPassword" placeholder="Password" autocomplete="current-password" />
+    <p class="login-error" id="loginError">Incorrect email or password.</p>
+    <button class="primary-btn" id="loginBtn">Log In</button>
+  </div>
+</div>
+
+<!-- OWNER DASHBOARD (hidden until authenticated) -->
+<div class="shell owner-shell" id="ownerShell" style="display:none;">
+
+  <div class="owner-topbar">
+    <img src="logo.jpeg" alt="" />
+    <strong id="brandName">Gharana Junction</strong>
+    <span style="color:var(--ink-soft); font-size:0.85rem;">Owner Panel</span>
+    <div class="header-spacer"></div>
+    <button class="ghost-btn small" id="logoutBtn">Log out</button>
+  </div>
+
+  <div class="owner-tabs">
+    <button class="owner-tab active" data-tab="items">Items</button>
+    <button class="owner-tab" data-tab="categories">Categories</button>
+  </div>
+
+  <!-- ITEMS PANEL -->
+  <section class="owner-panel" id="panel-items">
+    <div class="panel-head">
+      <h2>Menu Items</h2>
+    </div>
+    <select class="select-input" id="itemCategoryFilter"></select>
+    <div id="itemsList"></div>
+  </section>
+
+  <!-- CATEGORIES PANEL -->
+  <section class="owner-panel hidden" id="panel-categories">
+    <div class="panel-head">
+      <h2>Categories</h2>
+    </div>
+    <div id="categoriesList"></div>
+    <button class="ghost-btn" id="addCategoryBtn" style="width:100%; margin-top:8px;">+ Add Category</button>
+  </section>
+
+  <button class="fab" id="addItemFab" title="Add item">+</button>
+</div>
+
+<!-- Add/Edit Item Modal -->
+<div class="overlay" id="itemModal">
+  <div class="drawer" style="border-radius:20px; max-height:92vh;">
+    <div class="drawer-head">
+      <h2 id="itemModalTitle">Add Item</h2>
+      <button id="closeItemModal">✕</button>
+    </div>
+    <div class="drawer-body">
+      <input type="hidden" id="itemId" />
+      <label class="field-label">Category</label>
+      <select class="select-input" id="itemForm_category"></select>
+
+      <label class="field-label">Item name</label>
+      <input class="text-input" id="itemForm_name" placeholder="e.g. Korean Buns" />
+
+      <label class="field-label">Price (₹)</label>
+      <input class="text-input" id="itemForm_price" type="number" min="0" placeholder="e.g. 249" />
+
+      <label class="field-label">Description (optional)</label>
+      <textarea class="text-input" id="itemForm_desc" placeholder="Short description shown to customers"></textarea>
+
+      <label class="field-label">Photo (optional)</label>
+      <input type="hidden" id="itemForm_image" />
+      <div id="imagePreviewWrap" style="display:none; margin-bottom:12px;">
+        <img id="imagePreview" style="width:100%; max-height:180px; object-fit:cover; border-radius:10px;" />
+      </div>
+      <input type="file" accept="image/*" id="itemForm_imageFile" class="text-input" style="padding:10px;" />
+      <p class="helper-text" id="uploadStatus">Choose a photo from your phone or laptop.</p>
+
+      <label class="field-label" style="display:flex; align-items:center; gap:10px;">
+        <span class="switch on" id="itemForm_stockSwitch"></span> In stock
+      </label>
+    </div>
+    <div class="drawer-foot" style="display:flex; gap:10px;">
+      <button class="ghost-btn danger" id="deleteItemBtn" style="display:none;">Delete</button>
+      <button class="primary-btn" id="saveItemBtn">Save Item</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit Category Modal -->
+<div class="overlay" id="categoryModal">
+  <div class="drawer" style="border-radius:20px; max-height:none;">
+    <div class="drawer-head">
+      <h2 id="categoryModalTitle">Add Category</h2>
+      <button id="closeCategoryModal">✕</button>
+    </div>
+    <div class="drawer-body">
+      <input type="hidden" id="categoryId" />
+      <label class="field-label">Category name</label>
+      <input class="text-input" id="categoryForm_name" placeholder="e.g. Starters" />
+    </div>
+    <div class="drawer-foot" style="display:flex; gap:10px;">
+      <button class="ghost-btn danger" id="deleteCategoryBtn" style="display:none;">Delete</button>
+      <button class="primary-btn" id="saveCategoryBtn">Save Category</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-storage-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="owner.js"></script>
+</body>
+</html>
